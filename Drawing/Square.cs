@@ -1,44 +1,25 @@
-﻿using Windows.UI;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Media;
+﻿using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Shapes;
 
 
 namespace Drawing
 {
-    internal class Square : IDraw, IColor
+    internal class Square : DrawingShape, IDraw, IColor
     {
-        private int sideLength;
-        private int locX = 0, locY = 0;
-        private Rectangle rect = null;
+        public Square(int sideLength) : base(sideLength)
+        { }
 
-        public Square(int sideLength)
+        public override void Draw(Canvas canvas)
         {
-            this.sideLength = sideLength;
-        }
-
-        void IDraw.Draw(Canvas canvas)
-        {
-            this.rect = new Rectangle();
-            this.rect.Height = this.sideLength;
-            this.rect.Width = this.sideLength;
-            Canvas.SetTop(this.rect, this.locY);
-            Canvas.SetLeft(this.rect, this.locX);
-            canvas.Children.Add(this.rect);
-        }
-        void IDraw.SetLocation(int xCoord, int yCoord)
-        {
-            this.locX = xCoord;
-            this.locY = yCoord;
-        }
-
-        void IColor.SetColor(Color color)
-        {
-            if (this.rect is not null)
+            if (this.shape is not null)
             {
-                SolidColorBrush brush = new SolidColorBrush(color);
-                this.rect.Fill = brush;
+                canvas.Children.Remove(this.shape);
             }
+            else
+            {
+                this.shape = new Rectangle();
+            }
+            base.Draw(canvas);
         }
     }
 }
