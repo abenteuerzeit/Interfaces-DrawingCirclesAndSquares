@@ -11,7 +11,7 @@ namespace Drawing
 
         public override void Draw(Canvas canvas)
         {
-            if (this.shape != null)
+            if (this.shape is not null)
             {
                 canvas.Children.Remove(this.shape);
             }
