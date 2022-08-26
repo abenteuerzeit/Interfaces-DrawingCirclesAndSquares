@@ -4,27 +4,29 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Shapes;
 
+
 namespace Drawing
 {
     abstract class DrawingShape
     {
-        protected int size;
-        protected int locX = 0, locY = 0;
+        protected int _size;
+        protected int _x = 0, _y = 0;
         protected Shape shape = null;
 
         public DrawingShape(int size)
         {
-            this.size = size;
+            this._size = size;
         }
 
         public void SetLocation(int xCoord, int yCoord)
         {
-            this.locX = xCoord;
-            this.locY = yCoord;
+            this._x = xCoord;
+            this._y = yCoord;
         }
+
         public void SetColor(Color color)
         {
-            if (this.shape is not null)
+            if (this.shape != null)
             {
                 SolidColorBrush brush = new SolidColorBrush(color);
                 this.shape.Fill = brush;
@@ -35,12 +37,13 @@ namespace Drawing
         {
             if (this.shape is null)
             {
-                throw new InvalidOperationException("Shape is null ");
+                throw new InvalidOperationException("Shape is null");
             }
-            this.shape.Height = this.size;
-            this.shape.Width = this.size;
-            Canvas.SetTop(this.shape, this.locY);
-            Canvas.SetLeft(this.shape, this.locX);
+
+            this.shape.Height = this._size;
+            this.shape.Width = this._size;
+            Canvas.SetTop(this.shape, this._y);
+            Canvas.SetLeft(this.shape, this._x);
             canvas.Children.Add(this.shape);
         }
     }
