@@ -2,8 +2,8 @@
 
 namespace Drawing
 {
-    internal interface IColor
+    interface IColor
     {
-        void SetColor(Color color);
+        Color Color { set; }
     }
 }
