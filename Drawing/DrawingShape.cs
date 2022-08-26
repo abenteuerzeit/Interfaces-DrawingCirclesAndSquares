@@ -21,7 +21,7 @@ namespace Drawing
         public int X
         {
             get => this._x;
-            set => this._y = value;
+            set => this._x = value;
         }
 
         public int Y

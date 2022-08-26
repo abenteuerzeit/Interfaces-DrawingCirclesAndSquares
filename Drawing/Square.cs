@@ -1,17 +1,17 @@
 ﻿using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Shapes;
 
-
 namespace Drawing
 {
-    internal class Square : DrawingShape, IDraw, IColor
+    class Square : DrawingShape, IDraw, IColor
     {
         public Square(int sideLength) : base(sideLength)
-        { }
+        {
+        }
 
         public override void Draw(Canvas canvas)
         {
-            if (this.shape is not null)
+            if (this.shape != null)
             {
                 canvas.Children.Remove(this.shape);
             }
@@ -19,6 +19,7 @@ namespace Drawing
             {
                 this.shape = new Rectangle();
             }
+
             base.Draw(canvas);
         }
     }

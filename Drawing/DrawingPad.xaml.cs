@@ -16,7 +16,6 @@ namespace Drawing
         {
             this.InitializeComponent();
         }
-
         private void drawingCanvas_Tapped(object sender, TappedRoutedEventArgs e)
         {
             Point mouseLocation = e.GetPosition(this.drawingCanvas);

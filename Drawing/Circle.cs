@@ -3,11 +3,11 @@ using Windows.UI.Xaml.Shapes;
 
 namespace Drawing
 {
-    internal class Circle : DrawingShape, IDraw, IColor
+    class Circle : DrawingShape, IDraw, IColor
     {
-
         public Circle(int diameter) : base(diameter)
-        { }
+        {
+        }
 
         public override void Draw(Canvas canvas)
         {
